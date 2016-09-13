@@ -1,19 +1,14 @@
 <html>
   <head>
     <title>Anagram Checker</title>
-    
+      <meta charset="utf-8">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-
-
     <style>
       body { font-family: "Open Sans"; } 
-      
-      
-
     </style>
   </head>
   <body>
@@ -35,6 +30,39 @@
        
         
     </div>
+            <script>
+              function letterCount(str){
+                var count = new Array(36);
+                str = str.toUpperCase();
+                count.fill(0);
+                console.log(str);
+                  for(var i=0; i<str.length; i++){
+                     var temp = str.charCodeAt(i) ;
+                     if(temp >= 65 && temp <= 90){
+                      count[temp-65]++;
+                    }
+                    else if(temp >= 48 && temp<= 57){
+                      count[temp-22]++;
+                    }
+                 }
+              return count;
+              }
+
+              function anagramChecker(str1,str2){
+
+                var count1 = letterCount(str1);
+                var count2 = letterCount(str2);
+
+                  if(count1.toString() == count2.toString())
+                  {
+                    window.alert("The given strings are anagrams!");
+                  }
+                  else
+                  {
+                    window.alert("The given strings are NOT anagrams!");
+                  }
+              }
+            </script>
 
     <div class="container">
       <div class="row">
@@ -46,49 +74,9 @@
 
               String 1:<br><input type="text" name="string1" id="str1"><br><br>
               String 2: <br><input type="text" name="string2" id="str2"><br><br>
-             <input type="button" onclick="anagramChecker()" value="Submit">
+              <input type="button" onclick="anagramChecker(document.getElementById('str1').value,document.getElementById('str2').value)" value="Submit">
 
-  
-            <script>
-              // put the logic code here
-              function letterCount(str){
-                var count = 0;
-                str = str.toUpperCase();
-                
-                  for(var i=0, len=str.length; i<len; i++){
-                     var temp = str[i].charCodeAt(0) ;
-
-                    if(temp >= 65 && temp <= 90){
-                      count += temp-65;
-                    }
-                    else if(temp >= 48 && temp<= 57){
-                      count+= temp-48;
-                    }
-                 }
-              return count;
-              }
-
-              function anagramChecker(){
-                var str1 = document.getElementById("str1").value
-                var str2 = document.getElementById("str2").value
-                var count1 = letterCount(str1);
-                var count2 = letterCount(str2);
-
-                  if(count1 == count2)
-                  {
-                    window.alert("The given strings are anagrams!");
-                  }
-                  else
-                  {
-                    window.alert("The given strings are NOT anagrams!")
-                  }
-              }
-
-
-              
-
-            </script>
-            
+             
           </div>
         </div>
 
@@ -96,6 +84,7 @@
       </div>
 
     </div>
+    <br>
 
   </body>
 </html>

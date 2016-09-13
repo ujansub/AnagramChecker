@@ -1,0 +1,101 @@
+<html>
+  <head>
+    <title>Anagram Checker</title>
+    
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+
+    <style>
+      body { font-family: "Open Sans"; } 
+      
+      
+
+    </style>
+  </head>
+  <body>
+    
+    <svg height="5" width="5" xmlns="http://www.w3.org/2000/svg" version="1.1"> <defs> <pattern id="smalldot" patternUnits="userSpaceOnUse" width="5" height="5"> <image xlink:href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPSc1JyBoZWlnaHQ9JzUnPgo8cmVjdCB3aWR0aD0nNScgaGVpZ2h0PSc1JyBmaWxsPScjZmZmJy8+CjxyZWN0IHdpZHRoPScxJyBoZWlnaHQ9JzEnIGZpbGw9JyNjY2MnLz4KPC9zdmc+" x="0" y="0" width="5" height="5"> </image> </pattern> </defs> </svg> 
+
+    <div class="jumbotron">
+    <div class="container">
+        <h1 class="col-lg-10">
+            Anagram Checker 
+        </h1>
+        <p class="col-lg-8"> 
+            A simple web app to check if two given strings are anagrams or not.
+        </p>
+        <p></p>
+        
+        
+    </div>  
+       
+        
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-7">
+          
+            <div id="anagram">
+            <h3>Check Here</h3>
+              <p>Input and Check both Strings here!</p>
+
+              String 1:<br><input type="text" name="string1" id="str1"><br><br>
+              String 2: <br><input type="text" name="string2" id="str2"><br><br>
+             <input type="button" onclick="anagramChecker()" value="Submit">
+
+  
+            <script>
+              // put the logic code here
+              function letterCount(str){
+                var count = 0;
+                str = str.toUpperCase();
+                
+                  for(var i=0, len=str.length; i<len; i++){
+                     var temp = str[i].charCodeAt(0) ;
+
+                    if(temp >= 65 && temp <= 90){
+                      count += temp-65;
+                    }
+                    else if(temp >= 48 && temp<= 57){
+                      count+= temp-48;
+                    }
+                 }
+              return count;
+              }
+
+              function anagramChecker(){
+                var str1 = document.getElementById("str1").value
+                var str2 = document.getElementById("str2").value
+                var count1 = letterCount(str1);
+                var count2 = letterCount(str2);
+
+                  if(count1 == count2)
+                  {
+                    window.alert("The given strings are anagrams!");
+                  }
+                  else
+                  {
+                    window.alert("The given strings are NOT anagrams!")
+                  }
+              }
+
+
+              
+
+            </script>
+             
+          </div>
+        </div>
+
+
+      </div>
+
+    </div>
+
+  </body>
+</html>
